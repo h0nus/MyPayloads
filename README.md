@@ -1,4 +1,4 @@
-## Just a useless set of payload created by me. Saved here for remembrance.
+## Just a useless set of payload used or created by me. Saved here for remembrance.
 
 ### SQL Injection
 #### Time Based Blind:
