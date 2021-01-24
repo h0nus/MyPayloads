@@ -34,6 +34,8 @@
  -  `<![CDATA[ <script>prompt(2)</script> ]]>` (Sometimes WAFS block by keywords like DOCTYPE, ENTITY & ect, but you can inject into `<![CDATA[X]]>` )
 
 ### PWN scripts/tips
+* Oracle DB:
+  * Oneliner extract data: `echo "QUERY" | /PATH/TO/ORACLE/CLIENT/bin/sqlplus USER/PASSr@IP:PORT/SERVICE`
 * WebLogic:
   * Get Username:
     * Get file PATH_OF_WEBLOGIC/config/backup_config.xml and search for "<default-realm>" and get the user there.
